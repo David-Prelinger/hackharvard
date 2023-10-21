@@ -21,8 +21,6 @@ export default function Home() {
       <a className="link" href="signin.html">
         Sign In  
       </a>
-      <button type="button" className="btn btn-success"> <>style = "text-decoration:none"</><a href="./login">liogin</a>
- </button>
       <>&nbsp; &lt;</>
 
       <a className="link" href="signup.html">
