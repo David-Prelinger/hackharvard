@@ -9,7 +9,7 @@ document.getElementById("login").addEventListener("click", function() {
         password: password
       };
 
-    const url = 'https://hackharvard.vercel.app/api/login'; 
+    const url = 'https://hackharvard.vercel.app/api/'; 
   
     // Print the values to the console (you can replace this with your desired action)
     console.log(jsonData)
@@ -18,7 +18,7 @@ document.getElementById("login").addEventListener("click", function() {
 
 
     fetch(url,{
-        method: 'POST',
+        method: 'POST',   
         body: data,
         headers: {
           'Content-Type': 'application/json',
