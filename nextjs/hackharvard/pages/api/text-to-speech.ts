@@ -18,7 +18,7 @@ export default async function handler(
         return;
     }
 
-    const { voiceName: voiceId, text } = req.body; // Destructure the voiceName and text from the request body
+    const { voiceId, text } = req.body; // Destructure the voiceName and text from the request body
 
     if (!voiceId || !text) {
         res.status(400).send('Bad Request'); // Return a 400 Bad Request if either voiceName or text are missing

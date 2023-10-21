@@ -15,6 +15,9 @@
   "host_permissions": [
     "https://hackharvard.vercel.app/"
   ],
+  "webRequest": {
+    "optional": true
+  },
   "action": {
     "default_popup": "index.html" 
   },
