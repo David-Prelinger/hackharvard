@@ -3,7 +3,3 @@ document.getElementById("printButton").addEventListener("click", () => {
     chrome.tabs.sendMessage(tabs[0].id, { action: "print_text" });
   });
 });
-
-document.getElementById("sound").addEventListener("click", () => {
-  console.log("hi")
-});
