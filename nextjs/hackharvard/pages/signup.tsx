@@ -66,7 +66,9 @@ function Page() {
     Sign Up
   </button>
   <p className="mt-3 text-center">
-       
+    <small>
+      Have an account? <a href="/login">Login to Existing Account</a>
+    </small>
   </p>
 </form>
 
