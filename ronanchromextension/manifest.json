@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Telegram Message Printer",
+  "version": "1.0",
+  "description": "A Chrome extension to print Telegram messages",
+  "background":{
+    "service_worker": "./src/content.js"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "scripting",
+    "identity"
+  ],
+  "host_permissions": [
+    "https://*/"
+  ],
+  "action": {
+    "default_popup": "index.html" 
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://web.telegram.org/*"],
+      "js": ["./src/content.js"]
+    }
+  ]
+
+}
