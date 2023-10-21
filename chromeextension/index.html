@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Printer Extension</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=FontName" rel="stylesheet">
+  <style>
+    /* Change the font for a specific element */
+    .custom-font {
+      font-family: 'FontName', space-grotesk;
+    }
+  </style>
+  <style>
+    /* Additional custom CSS for setting margins */
+    .custom-margin {
+      margin: 20px; /* You can adjust the margin size as needed */
+    }
+  </style>
+</head>
+<body style="width: 200px; height: 100px;"åßß>
+  <form class="custom-margin">
+    <h2 class="text-center mb-4 FontName">Login</h2>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter your email"
+            required
+            autocomplete="email"
+        />
+    </div>
+    <div class="mb-3">
+        <label for "password" class="form-label">Password</label>
+        <div class="input-group">
+            <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Enter your password"
+                required
+                minlength="8"
+                autocomplete="new-password"
+            />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Login</button>
+  </form>
+</body>
+</html>
