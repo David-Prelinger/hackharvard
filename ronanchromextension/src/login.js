@@ -8,6 +8,10 @@ document.getElementById("login").addEventListener("click", function() {
     password: password
   };
 
+  var audioElement = document.getElementById("myAudio");
+
+  console.log(audioElement);
+
   const jsonData = JSON.stringify(data);
 
   console.log(jsonData);
@@ -55,8 +59,8 @@ document.getElementById("login").addEventListener("click", function() {
     failedLogin.textContent = 'Login Failed';
     failedLogin.style.color = 'red'; // Set the text color to red
 
-    containerDiv.appendChild(failedLogin); // Add the text to the container div
-    document.body.appendChild(containerDiv); // Add the container div to the body
+    const audioElement = document.getElementById('myAudio');
+    audioElement.setAttribute('autoplay', 'autoplay');
   }
 }
   })

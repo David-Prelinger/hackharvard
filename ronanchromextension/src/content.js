@@ -17,20 +17,36 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         }
       });
 
+      const voiceId = "DqttY73fyooyW3ftsoQ6"
+
+      const text = textContentArray.join();
+
       // Convert the array to a JSON string
-      const jsonData = JSON.stringify({ textContentArray });
+
+      const data = {
+        text,
+        voiceId
+      };
+      
+      // Convert the object to a JSON string
+      const jsonData = JSON.stringify(data);
 
       console.log(jsonData)
 
+
+
+      
+
       // Replace 'google.com' with the actual URL where you want to send the data
-      const url = 'https://hackharvard.vercel.app/api/login'; 
+      const url = 'https://hackharvard.vercel.app/api/text-to-speech'; 
 
       // Send an HTTP POST request to the specified URL
-      fetch(url, { mode: 'no-cors'}, {
+      fetch(url,{
         method: 'POST',
         body: jsonData,
         headers: {
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
         },
       })
         .then((response) => {
@@ -48,9 +64,3 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
   }
 });
-function printOneForever() {
-  console.log(1);
-  setTimeout(printOneForever, 1000); // Print '1' every second (adjust as needed)
-}
-
-printOneForever();
