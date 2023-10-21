@@ -4,13 +4,11 @@ import { useAuthContext } from '../components/AuthContext';  // Adjust the impor
 import { useRouter } from 'next/router';
 import { doc, getDoc, getFirestore } from "firebase/firestore";  // Import Firestore functions
 
-
-
 const ProtectedPage: React.FC = () => {
   const { user } = useAuthContext();
   const router = useRouter();
 
-  const [voices, setVoices] = useState(null);
+  const [voices, setVoices] = useState<Map<String, String> | null>(null);
 
   useEffect(() => {
     if (user == null) {
@@ -46,7 +44,25 @@ const ProtectedPage: React.FC = () => {
       {voices && (
         <div>
           <h2>Your Voices</h2>
-          <pre>{JSON.stringify(voices, null, 2)}</pre>
+          <table>
+            <thead>
+              <tr>
+                {/* Assume each voice object has a 'name' and 'description' property */}
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+            {voices != null && Array.from(Object.keys(voices)).map((key, index) => {
+                const voice = key;
+                return (
+                  <tr key={index}>
+                    <td>{voice}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       )}
     </div>
