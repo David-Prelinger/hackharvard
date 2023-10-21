@@ -36,12 +36,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 
       
-
+      sendResponse({farewell: jsonData});
       // Replace 'google.com' with the actual URL where you want to send the data
-      const url = 'https://hackharvard.vercel.app/api/text-to-speech'; 
-      chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
-        console.log(response.farewell);
-      });
+      //const url = 'https://hackharvard.vercel.app/api/text-to-speech'; 
+      console.log('here');
+     
 /*
       // Send an HTTP POST request to the specified URL
       fetch(url,{

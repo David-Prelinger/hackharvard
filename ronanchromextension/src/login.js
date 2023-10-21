@@ -29,10 +29,8 @@ document.getElementById("login").addEventListener("click", function() {
   .then((response) => {
     if (response.ok) {
       console.log(response)
-      const printButton = document.createElement('button');
-      printButton.id = 'printButton';
-      printButton.className = 'btn btn-primary btn-block';
-      printButton.textContent = 'Print Text';
+      const printButton = document.getElementById('printButton');
+      printButton.style = '';
 
       // Add a click event handler to the button
       printButton.addEventListener('click', function() {
