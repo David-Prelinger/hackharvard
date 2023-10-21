@@ -8,9 +8,6 @@ document.getElementById("login").addEventListener("click", function() {
         email: email,
         password: password
       };
-      
-      const jsonData = JSON.stringify(data);
-      console.log(jsonData)
 
     const url = 'https://hackharvard.vercel.app/api/login'; 
   
@@ -22,7 +19,7 @@ document.getElementById("login").addEventListener("click", function() {
 
     fetch(url,{
         method: 'POST',
-        body: jsonData,
+        body: data,
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin':'*'
