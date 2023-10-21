@@ -1,8 +1,9 @@
 // ProtectedPage.tsx
+// ProtectedPage.tsx
 import React, { useEffect, useState } from 'react';
 import { useAuthContext } from '../components/AuthContext';
 import { useRouter } from 'next/router';
-import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 
 const axios = require('axios');
 const FormData = require('form-data');
@@ -32,12 +33,13 @@ const ProtectedPage: React.FC = () => {
 
 
     event.preventDefault();
-    if (!mp3File) {
+
+    if (!mp3File && !user) {
       console.error('No file selected');
       return;
-  }
+    }
 
-  try {
+    try {
       // Create a new instance of FormData
       let form = new FormData();
 
@@ -47,39 +49,24 @@ const ProtectedPage: React.FC = () => {
 
       // Make the POST request
       const postResponse = await axios.post('https://api.elevenlabs.io/v1/voices/add', form, {
-          headers: {
-              'xi-api-key': 'c9a4a0e489737ef5f7f7f12b2c1d6df4',
-          },
+        headers: {
+          'xi-api-key': 'c9a4a0e489737ef5f7f7f12b2c1d6df4',
+        },
       });
-
       console.log('Voice added successfully:', postResponse.data);
-  } catch (error) {
+       // Assume postResponse.data.voiceId contains the voiceId from the ElevenLabs API response
+       const voiceId = postResponse.data.voice_id;
+
+       // Initialize Firestore
+       const db = getFirestore();
+ 
+       // Create or update the document in Firestore
+       const userDocRef = doc(db, 'voices', user!.uid);
+       const newVoice = { [text]: voiceId };  // Use the text as the voice name
+       await setDoc(userDocRef, { voices: newVoice }, { merge: true });
+    } catch (error) {
       console.error('Error adding voice:', error);
-  }
-
-    /*
-    if (user && mp3File) {
-      const token = await user.getIdToken();
-
-      const formData = new FormData();
-      formData.append('file', mp3File);
-      formData.append('text', text);
-
-      try {
-        const response = await fetch('/api/upload-voice', {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          body: formData,
-        });
-
-        const responseData = await response.json();
-        console.log('File upload successful:', responseData);
-      } catch (error) {
-        console.error('Error uploading file:', error);
-      }
-    }*/
+    }
   };
 
   if (user == null) {
