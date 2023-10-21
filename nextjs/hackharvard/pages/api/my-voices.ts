@@ -26,6 +26,7 @@ export default async function Handler(req: NextApiRequest, res: NextApiResponse)
 
   
   try {
+    console.log(token)
     const decodedToken = await admin.auth().verifyIdToken(token);
     const uid = decodedToken.uid;  // Extract the user ID from the decoded token
 
