@@ -19,13 +19,23 @@
     "optional": true
   },
   "action": {
-    "default_popup": "index.html" 
+    "default_popup": "index.html",
+    "default_icon": {
+        "16": "./16.png",
+        "48": "./48.png",
+        "128": "./128.png"
+    }
   },
   "content_scripts": [
     {
       "matches": ["*://web.telegram.org/*"],
       "js": ["./src/content.js"]
     }
-  ]
+  ],
+  "icons": {
+    "16": "./16.png",
+    "48": "./48.png",
+    "128": "./128.png"
+  }
 
 }
