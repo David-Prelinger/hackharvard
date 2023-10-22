@@ -21,6 +21,26 @@ const UploadAudio: React.FC = () => {
     }
   }, [user, router]);
 
+  useEffect(() => {
+    const fetchVoices = async () => {
+      try {
+        const db = getFirestore();
+        const userDocRef = doc(db, 'voices', user!.uid);
+        const userDoc = await getDoc(userDocRef);
+        if (userDoc.exists()) {
+          setVoices(userDoc.data().voices);
+        }
+      } catch (error) {
+        console.error('Error fetching voices:', error);
+      }
+    };
+
+    if (user) {
+      fetchVoices();
+    }
+  }, [user]);
+
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];
     if (file) {
@@ -101,12 +121,11 @@ const UploadAudio: React.FC = () => {
       </form>
       {voices && (
         <div>
-          <h2 className="text-primary mb-3">Your Voices</h2>
+          <h1 className="mb-3 fw-bold"  style={{color:'#25A6D9'}}>Your Voices</h1>
           <table className="table table-striped">
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Description</th>
               </tr>
             </thead>
             <tbody>
