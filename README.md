@@ -1,5 +1,5 @@
 <h1>TeleSpeech</h1>
-<h2>AI Chrome Extension </h2>
+<h2>A Chrome Extension that converts Telegram messages into custom AI-generated speech, mimicking the distinct voice of each sender. </h2>
 
 ![128](https://github.com/David-Prelinger/hackharvard/assets/71115970/ccef3cd6-6923-4c01-ad7b-a7444116154a)
 
