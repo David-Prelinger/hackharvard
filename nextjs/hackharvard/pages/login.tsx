@@ -57,7 +57,7 @@ function Page() {
     </div>
   </div>
   <button type="submit" className="btn btn-primary btn-block" style={{backgroundColor: '#25A6D9', borderColor: '#25A6D9'}}>
-    Sign Up
+    Log In
   </button>
   <p className="mt-3 text-center">
     <small>
