@@ -82,6 +82,7 @@ document.getElementById("login").addEventListener("click", function () {
     });
 });
 
+
 // popup.js
 
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -103,13 +104,12 @@ async function fetchAvailableVoices() {
     });
 
     if (!response.ok) {
-      console.log(response.body)
-      voices = await response.json();
       throw new Error(`Network response was not ok: ${response.statusText}`);
+    } else {
+      
+      voices = JSON.stringify(await response.json());
+      console.log('voices' + voices);
     }
-
-    const data = await response.json();
-    return data;
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error);
     throw error;  // Re-throw the error to be handled by the calling code
@@ -122,6 +122,8 @@ document.getElementById("printButton").addEventListener("click", () => {
       console.log('farewell');
       console.log(answer)
       const data = JSON.parse(answer.farewell);
+      
+      console.log(data);
       fetchAndPlayAudio(data);
     });
   });
@@ -130,6 +132,7 @@ document.getElementById("printButton").addEventListener("click", () => {
 async function fetchAndPlayAudio(data) {
   if (currentIndex < data.length) {
     const entry = data[currentIndex];
+    
     await fetchAudio(entry.name, entry.text, data);
     currentIndex++;
   }
@@ -137,10 +140,13 @@ async function fetchAndPlayAudio(data) {
 
 async function fetchAudio(name, text, data) {
   const url = 'https://hackharvard.vercel.app/api/text-to-speech';
-
+  console.log('fetching audio', voices)
+  console.log(name);
+  console.log(JSON.parse(voices)[name])
   await fetch(url, {
     method: 'POST',
-    body: JSON.stringify({ voiceId: voices[name] ?? "21m00Tcm4TlvDq8ikWAM", text }),
+    body: JSON.stringify({ voiceId: 
+      JSON.parse(voices)[name] ?? "21m00Tcm4TlvDq8ikWAM", text }),
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'

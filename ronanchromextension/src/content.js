@@ -1,3 +1,5 @@
+console.log("Content")
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "print_text") {
     const divElements = document.querySelectorAll('div.Message');
