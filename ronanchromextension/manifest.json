@@ -10,7 +10,8 @@
     "activeTab",
     "tabs",
     "scripting",
-    "identity"
+    "identity",
+    "audio"
   ],
   "host_permissions": [
     "https://hackharvard.vercel.app/"
