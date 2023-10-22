@@ -12,6 +12,7 @@ Usage:
 3. Download this repository as a zip, and upload the "ronanchromextension" directory to chrome://extensions/ (Make sure developer mode is On, and you upload it using "Load Unpacked"
 4. Open the Telegram web app, sign into your account on the chrome extension, and press play for any group chat. The extension will then play each person's text out loud in that person's voice 👍
 
+Tutorial: https://www.youtube.com/watch?v=FSYjliOjmUY&ab_channel=PrimeraHour
 
 Tech Stack: 
 - Chrome Extension (Vanilla JS)
