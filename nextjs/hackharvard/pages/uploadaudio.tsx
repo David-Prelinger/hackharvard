@@ -14,8 +14,12 @@ const UploadAudio: React.FC = () => {
   const [voices, setVoices] = useState<Map<String, String> | null>(null);
   const [mp3File, setMp3File] = useState<File | null>(null);
   const [text, setText] = useState('');
-
-  // Existing useEffect...
+  
+  useEffect(() => {
+    if (user == null) {
+      router.push('/login');
+    }
+  }, [user, router]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];
