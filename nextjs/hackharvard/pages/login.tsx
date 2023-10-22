@@ -19,7 +19,7 @@ function Page() {
 
         // else successful
         console.log(result)
-        return router.push("/admin")
+        return router.push("/uploadaudio")
     }
     return (<div className="container">
 <form onSubmit = {handleForm} className="mt-4">
@@ -56,7 +56,7 @@ function Page() {
       />
     </div>
   </div>
-  <button type="submit" className="btn btn-primary btn-block">
+  <button type="submit" className="btn btn-primary btn-block" style={{backgroundColor: '#25A6D9', borderColor: '#25A6D9'}}>
     Sign Up
   </button>
   <p className="mt-3 text-center">

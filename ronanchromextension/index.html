@@ -3,7 +3,6 @@
 <head>
   <title>Text Printer Extension</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=FontName" rel="stylesheet">
   <style>
     /* Change the font for a specific element */
     .custom-font {
@@ -17,9 +16,13 @@
     }
   </style>
 </head>
-<body style="width: 200px; height: 100px;"åßß>
-  <form class="custom-margin">
-    <h2 class="text-center mb-4 FontName">Login</h2>
+<body style="width: 300px; height: 200px; margin:10px; margin-bottom: 50px;">
+  <div class="d-flex justify-content-center align-items-center">
+    <h2 class="text-center mb-4 ml-2">TeleSpeech</h2>
+    <img src="./src/telespeech.png" alt="Telegram Logo" width="40" height="40" style="position:relative; bottom:12px;left:10px">
+  </div>
+    <h6 class="text-sm text-center font-weight-light">Custom AI text-to-speech on Telegram</h6>
+    <div id="loginform" style = "padding-bottom: 30px;">
     <div class="mb-3">
         <label for="email" class="form-label">Email Address</label>
         <input
@@ -32,7 +35,8 @@
         />
     </div>
     <div class="mb-3">
-        <label for "password" class="form-label">Password</label>
+      <form>
+        <label class="form-label">Password</label>
         <div class="input-group">
             <input
                 type="password"
@@ -44,8 +48,15 @@
                 autocomplete="new-password"
             />
         </div>
+      </form>
     </div>
-    <button type="submit" class="btn btn-primary btn-block">Login</button>
-  </form>
+    <button id="printButton" class="btn btn-primary btn-block" style="display: none;">Play sound</button>
+    <button id="login" class="btn btn-primary btn-block">Login</button>
+  </div>
+  <audio id="myAudio" controls="controls" style="display:none;">
+    <source src="./src/moo.mp3" type="audio/mpeg">
+  </audio>
+    <script src="./src/popup.js"></script>
+    <script src="./src/login.js"></script>
 </body>
 </html>
