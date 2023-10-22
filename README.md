@@ -1,5 +1,6 @@
 <h1>TeleSpeech</h1>
 <h2>Revolutionizing Text-to-Speech </h2>
+![128](https://github.com/David-Prelinger/hackharvard/assets/71115970/984bc810-4442-4a57-b1da-b0c56f33401b)
 
 Primera Hour, Kylie Bogar, Ronan Takizawa, David Prelinger
 
@@ -20,6 +21,3 @@ Tech Stack:
 - Chrome Extension (Vanilla JS)
 - Web App (NextJS, Bootstrap, Firebase)
 - API (Eleven Labs text-speech AI API)
-
-
-![128](https://github.com/David-Prelinger/hackharvard/assets/71115970/984bc810-4442-4a57-b1da-b0c56f33401b)
