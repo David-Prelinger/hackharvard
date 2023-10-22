@@ -7,14 +7,26 @@ import Image from 'next/image'
 
 import axios from 'axios';
 import FormData from 'form-data';
+import { signOut } from 'firebase/auth';
+import { auth } from '@/config';
 const UploadAudio: React.FC = () => {
   const { user } = useAuthContext();
   const router = useRouter();
+
 
   const [voices, setVoices] = useState<Map<String, String> | null>(null);
   const [mp3File, setMp3File] = useState<File | null>(null);
   const [text, setText] = useState('');
   
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      router.push('/login');
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
+
   useEffect(() => {
     if (user == null) {
       router.push('/login');
@@ -116,6 +128,7 @@ const UploadAudio: React.FC = () => {
 
   return (
     <div className="container mt-5">
+       <button onClick={handleLogout} className="btn btn-primary" style={{ backgroundColor: '#25A6D9', borderColor: '#25A6D9'}}>Logout</button>  {/* Logout Button */}
         <Image src={Explanation} alt="Telegram Pic" width={1100} height={500}/>
         <h1 className=" mb-4  fw-bold" style={{color:'#25A6D9'}}>Upload Your Voice</h1>
 
