@@ -1,4 +1,4 @@
-<h1>Telespeech</h1>
+<h1>TeleSpeech</h1>
 <h2>Revolutionizing Text-to-Speech </h2>
 
 Primera Hour, Kylie Bogar, Ronan Takizawa, David Prelinger
