@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useAuthContext } from '../components/AuthContext';
 import { useRouter } from 'next/router';
 import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
@@ -21,24 +21,25 @@ const UploadAudio: React.FC = () => {
     }
   }, [user, router]);
 
-  useEffect(() => {
-    const fetchVoices = async () => {
-      try {
-        const db = getFirestore();
-        const userDocRef = doc(db, 'voices', user!.uid);
-        const userDoc = await getDoc(userDocRef);
-        if (userDoc.exists()) {
-          setVoices(userDoc.data().voices);
-        }
-      } catch (error) {
-        console.error('Error fetching voices:', error);
-      }
-    };
 
+  const fetchVoices = useCallback(async () => {
+    try {
+      const db = getFirestore();
+      const userDocRef = doc(db, 'voices', user!.uid);
+      const userDoc = await getDoc(userDocRef);
+      if (userDoc.exists()) {
+        setVoices(userDoc.data().voices);
+      }
+    } catch (error) {
+      console.error('Error fetching voices:', error);
+    }
+  }, [user]);
+
+  useEffect(() => {
     if (user) {
       fetchVoices();
     }
-  }, [user]);
+  }, [user, fetchVoices]);
 
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,6 +51,26 @@ const UploadAudio: React.FC = () => {
 
   const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);
+  };
+
+  const handleDeleteVoice = async (voiceName: string) => {
+    try {
+      const token = await user!.getIdToken();
+      await axios.get(
+        '/api/delete-voice',
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            name: voiceName,
+          },
+        }
+      );
+      fetchVoices();
+    } catch (error) {
+      console.error('Error deleting voice:', error);
+    }
   };
 
   const handleFormSubmit = async (event: React.FormEvent) => {
@@ -122,6 +143,7 @@ const UploadAudio: React.FC = () => {
             <thead>
               <tr>
                 <th>Name</th>
+                <th>Action</th> 
               </tr>
             </thead>
             <tbody>
@@ -130,6 +152,14 @@ const UploadAudio: React.FC = () => {
                 return (
                   <tr key={index}>
                     <td>{voice}</td>
+                    <td>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => handleDeleteVoice(voice)}
+                      >
+                        Delete
+                      </button>
+                    </td>
                   </tr>
                 );
               })}
