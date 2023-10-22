@@ -85,14 +85,13 @@ const UploadAudio: React.FC = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="textInput" className="form-label">Enter Name of Speaker</label>
-          <textarea 
+          <input
             onChange={handleTextChange}
             value={text}  
             placeholder="Enter Name" 
             className="form-control" 
-            id="textInput" 
-            rows={1}  // Set the number of rows
-></textarea>
+            id="textInput"
+></input>
         </div>
         <button type="submit" className="btn btn-primary" style={{ backgroundColor: '#25A6D9', borderColor: '#25A6D9'}}>Submit</button>
       </form>
@@ -119,6 +118,7 @@ const UploadAudio: React.FC = () => {
           </table>
         </div>
       )}
+      <div style={{paddingBottom:"50px"}}></div>
     </div>
   );
 };
