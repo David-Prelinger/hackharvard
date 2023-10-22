@@ -25,7 +25,7 @@ export default async function handler(
         return;
     }
 
-    const apiKey = 'c9a4a0e489737ef5f7f7f12b2c1d6df4';
+    const apiKey = process.env.ELEVENLABS_API_KEY;
     const voiceSettings = { stability: 1, similarity_boost: 0 };
 
     const baseUrl = "https://api.elevenlabs.io/v1/text-to-speech";

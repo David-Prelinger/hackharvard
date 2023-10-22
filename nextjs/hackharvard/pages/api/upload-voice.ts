@@ -1,81 +1,51 @@
-// pages/api/private-endpoint.ts
-import * as admin from 'firebase-admin';
-import { NextApiRequest, NextApiResponse } from 'next';
-import path from 'path';
-import Busboy from 'busboy';
-import busboy from 'busboy';
-const serviceAccountKeyPath = require('../../firebase-credentials');
-const axios = require('axios');
-const fs = require('fs');
-const FormData = require('form-data');
-// ... rest of your code
+// pages/api/uploadAudio.ts
+import type { NextApiRequest, NextApiResponse } from 'next';
+import axios from 'axios';
+import formidable from 'formidable';
+import FormData from 'form-data';  // Import form-data
+import fs from 'fs';  // Import the fs module
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
 
 export default async function Handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method === 'POST') {
-        try {
-            /*const bb = busboy({ headers: req.headers });
-            let fileBuffer: Buffer | null = null;
-            let text: string | null = null;
-      
-            bb.on('file', (name, file, info) => {
-              
-              const chunks: any[] = [];
-              file.on('data', chunk => chunks.push(chunk));
-              file.on('end', () => {
-                fileBuffer = Buffer.concat(chunks);
-                res.status(200).send('early finish')
-              });
-              res.status(200).send('early finish2')
-      
-            });
-      
-            /*bb.on('field', (fieldname, value) => {
-              if (fieldname === 'text') {
-                text = value;
-              }
-            });*/
+  if (req.method !== 'POST') {
+    return res.status(405).end();  // Method Not Allowed
+  }
 
-            /*bb.on('finish', async () => {
-              // ... rest of your code
-              res.status(200).send('Uploaded voice');
-            });
-      
-            req.pipe(bb);
-            */
+  const form = formidable({});
 
-
-            // Create a new instance of FormData
-            let form = new FormData();
-
-            // Append the necessary data
-            form.append('name', 'Sample Voice');
-            form.append('files', fs.createReadStream('sample.mp3'));
-            form.append('description', 'This is a sample voice description.');
-            form.append('labels', JSON.stringify({ label1: 'value1', label2: 'value2' }));  // Serialized labels dictionary
-
-            // Make the POST request
-            axios.post('api.elevenlabs.io/v1/voices/add', form, {
-                headers: {
-                    ...form.getHeaders(),
-                    'xi-api-key': 'c9a4a0e489737ef5f7f7f12b2c1d6df4'
-                }
-            })
-                .then((response: { data: any; }) => {
-                    console.log('Voice added successfully:', response.data)
-                    res.status(200).send('Voice added')
-                })
-                .catch((error: any) => {
-                    console.error('Error adding voice:', error);
-                    res.status(500).send( error)
-
-                });
-
-
-        } catch (error) {
-            console.error('Error:', error);
-            res.status(500).send('Internal Server Error');
-        }
-    } else {
-        res.status(405).send('Method Not Allowed');
+  form.parse(req, async (err, fields, files) => {
+    if (err) {
+      console.error('Error parsing form:', err);
+      return res.status(500).json({ error: 'Internal Server Error' });
     }
-}
+
+    const file = files.files;  // Assuming the file input field name is "files"
+    if (!file) {
+      console.error('No file provided in form data');
+      return res.status(400).json({ error: 'No file provided' });
+    }
+
+    const formData = new FormData();
+    formData.append('name', 'Sample Voice');
+    formData.append('files', fs.createReadStream(file[0].filepath), file[0].originalFilename ?? 'ABC');  // Include the file name
+
+    try {
+      const response = await axios.post('https://api.elevenlabs.io/v1/voices/add', formData, {
+        headers: {
+          'xi-api-key': process.env.ELEVENLABS_API_KEY,
+          ...formData.getHeaders(),
+        },
+      });
+
+      res.status(200).json(response.data);
+    } catch (error) {
+      console.error('Error uploading audio:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+};

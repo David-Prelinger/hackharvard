@@ -70,11 +70,7 @@ const UploadAudio: React.FC = () => {
       form.append('files', mp3File);  // Append the file object directly
 
       // Make the POST request
-      const postResponse = await axios.post('https://api.elevenlabs.io/v1/voices/add', form, {
-        headers: {
-          'xi-api-key': 'c9a4a0e489737ef5f7f7f12b2c1d6df4',
-        },
-      });
+      const postResponse = await axios.post('/api/upload-voice', form,);
       console.log('Voice added successfully:', postResponse.data);
        // Assume postResponse.data.voiceId contains the voiceId from the ElevenLabs API response
        const voiceId = postResponse.data.voice_id;
