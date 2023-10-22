@@ -16,7 +16,7 @@ document.getElementById("login").addEventListener("click", function () {
   const jsonData = JSON.stringify(data);
 
 
-  const url = 'https://hackharvard.vercel.app/api/login';
+  const url = 'https://telespeech.vercel.app/api/login';
 
   fetch(url, {
     method: 'POST',
@@ -89,7 +89,7 @@ let currentIndex = 0;
 let audioQueue = [];
 let isPlaying = false;
 async function fetchAvailableVoices() {
-  const url = 'https://hackharvard.vercel.app/api/my-voices';
+  const url = 'https://telespeech.vercel.app/api/my-voices';
 
   try {
     const response = await fetch(url, {
@@ -137,7 +137,7 @@ async function fetchAndPlayAudio(data) {
 }
 
 async function fetchAudio(name, text, data) {
-  const url = 'https://hackharvard.vercel.app/api/text-to-speech';
+  const url = 'https://telespeech.vercel.app/api/text-to-speech';
   console.log('fetching audio', voices)
   console.log(name);
   console.log(JSON.parse(voices)[name])

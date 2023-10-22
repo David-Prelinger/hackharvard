@@ -14,7 +14,7 @@
     "audio"
   ],
   "host_permissions": [
-    "https://hackharvard.vercel.app/"
+    "https://telespeech.vercel.app/"
   ],
   "webRequest": {
     "optional": true
