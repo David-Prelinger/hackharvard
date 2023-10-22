@@ -16,6 +16,8 @@ Usage:
 
 Tutorial: https://www.youtube.com/watch?v=FSYjliOjmUY&ab_channel=PrimeraHour
 
+<a href="https://www.youtube.com/watch?v=FSYjliOjmUY&ab_channel=PrimeraHour">Tutorial</a>
+
 Tech Stack: 
 - Chrome Extension (Vanilla JS)
 - Web App (NextJS, Bootstrap, Firebase)
