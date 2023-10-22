@@ -62,10 +62,11 @@ const UploadAudio: React.FC = () => {
        const userDocRef = doc(db, 'voices', user!.uid);
        const newVoice = { [text]: voiceId };  // Use the text as the voice name
        await setDoc(userDocRef, { voices: newVoice }, { merge: true });
+       return router.push("/uploaded")
     } catch (error) {
       console.error('Error adding voice:', error);
+      alert("Audio Upload Failed")
     }
-    return router.push("/uploaded")
   };
 
   if (user == null) {
