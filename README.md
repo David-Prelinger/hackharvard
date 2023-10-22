@@ -7,6 +7,8 @@ Primera Hour, Kylie Bogar, Ronan Takizawa, David Prelinger
 
 TeleSpeech is an AI Chrome Extension that converts Telegram messages into speech, mimicking the distinct voice of each sender. Using the chrome extension and the web app, you can upload anyone's voice and use it to read messages out loud in a Telegram group chat. 
 
+AI voices are boring and stale. Chrome extensions like "Free Text To Speech Online" use default voices to read text messages on the web out loud. Default voices have good cadence and pronunciation but lack the emotional connection a user feels when they hear the voice of the person they are communicating with. This emotional connection is important for a user, as it helps them feel engaged in online communication, and assists users to identify who is talking when vocalizing the messages.
+
 Our project is an attempt to improve the <a href="https://chrome.google.com/webstore/detail/free-text-to-speech-onlin/npdkkcjlmhcnnaoobfdjndibfkkhhdfn">"Free Text To Speech Online"</a> chrome extension, which does text-to-speech with a default voice. We tried to improve the Chrome extension by allowing customizable voices and only having it read the content within a text message and not everything on a page. 
 
 Usage:
