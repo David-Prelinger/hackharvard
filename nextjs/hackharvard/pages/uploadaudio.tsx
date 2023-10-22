@@ -1,13 +1,13 @@
-// ProtectedPage.tsx
-// ProtectedPage.tsx
 import React, { useEffect, useState } from 'react';
 import { useAuthContext } from '../components/AuthContext';
 import { useRouter } from 'next/router';
 import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import Explanation from '../public/explanation.svg'
+import Image from 'next/image'
 
-const axios = require('axios');
-const FormData = require('form-data');
-const ProtectedPage: React.FC = () => {
+import axios from 'axios';
+import FormData from 'form-data';
+const UploadAudio: React.FC = () => {
   const { user } = useAuthContext();
   const router = useRouter();
 
@@ -29,12 +29,10 @@ const ProtectedPage: React.FC = () => {
   };
 
   const handleFormSubmit = async (event: React.FormEvent) => {
-
-
-
     event.preventDefault();
 
     if (!mp3File && !user) {
+      alert('No file selected');
       console.error('No file selected');
       return;
     }
@@ -64,8 +62,10 @@ const ProtectedPage: React.FC = () => {
        const userDocRef = doc(db, 'voices', user!.uid);
        const newVoice = { [text]: voiceId };  // Use the text as the voice name
        await setDoc(userDocRef, { voices: newVoice }, { merge: true });
+       return router.push("/uploaded")
     } catch (error) {
       console.error('Error adding voice:', error);
+      alert("Audio Upload Failed")
     }
   };
 
@@ -74,21 +74,33 @@ const ProtectedPage: React.FC = () => {
   }
 
   return (
-    <div>
-      <h1>Protected Page</h1>
-      <form encType="multipart/form-data" onSubmit={handleFormSubmit}>
-        <input type="file" accept=".mp3" onChange={handleFileChange} />
-        <input type="text" value={text} onChange={handleTextChange} placeholder="Enter some text" />
-        <button type="submit">Submit</button>
+    <div className="container mt-5">
+        <Image src={Explanation} alt="Telegram Pic" width={1100} height={500}/>
+        <h1 className=" mb-4  fw-bold" style={{color:'#25A6D9'}}>Upload Your Voice</h1>
+
+      <form encType="multipart/form-data" onSubmit={handleFormSubmit} className="mb-4">
+        <div className="mb-3">
+          <label htmlFor="fileInput" className="form-label">Upload MP3 (Max 1 min)</label>
+          <input type="file" accept=".mp3" onChange={handleFileChange} className="form-control" id="fileInput" />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="textInput" className="form-label">Enter Name of Speaker</label>
+          <input
+            onChange={handleTextChange}
+            value={text}  
+            placeholder="Enter Name" 
+            className="form-control" 
+            id="textInput"
+></input>
+        </div>
+        <button type="submit" className="btn btn-primary" style={{ backgroundColor: '#25A6D9', borderColor: '#25A6D9'}}>Submit</button>
       </form>
-      <p>Only logged-in users can see this page.</p>
       {voices && (
         <div>
-          <h2>Your Voices</h2>
-          <table>
+          <h2 className="text-primary mb-3">Your Voices</h2>
+          <table className="table table-striped">
             <thead>
               <tr>
-                {/* Assume each voice object has a 'name' and 'description' property */}
                 <th>Name</th>
                 <th>Description</th>
               </tr>
@@ -106,8 +118,10 @@ const ProtectedPage: React.FC = () => {
           </table>
         </div>
       )}
+      <div style={{paddingBottom:"50px"}}></div>
     </div>
   );
 };
 
-export default ProtectedPage;
+export default UploadAudio;
+
