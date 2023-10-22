@@ -12,11 +12,9 @@ document.getElementById("login").addEventListener("click", function () {
 
   var audioElement = document.getElementById("myAudio");
 
-  console.log(audioElement);
 
   const jsonData = JSON.stringify(data);
 
-  console.log(jsonData);
 
   const url = 'https://hackharvard.vercel.app/api/login';
 
@@ -33,7 +31,7 @@ document.getElementById("login").addEventListener("click", function () {
 
 
         const printButton = document.getElementById('printButton');
-        printButton.style = '';
+        printButton.style = 'background-color: #25A6D9;  border-color: #25A6D9;';
 
         // Add a click event handler to the button
         printButton.addEventListener('click', function () {

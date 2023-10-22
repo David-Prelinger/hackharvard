@@ -125,7 +125,7 @@ const UploadAudio: React.FC = () => {
           <input type="file" accept=".mp3" onChange={handleFileChange} className="form-control" id="fileInput" />
         </div>
         <div className="mb-3">
-          <label htmlFor="textInput" className="form-label">Enter Name of Speaker</label>
+          <label htmlFor="textInput" className="form-label">Enter Telegram Username of Speaker</label>
           <input
             onChange={handleTextChange}
             value={text}  
