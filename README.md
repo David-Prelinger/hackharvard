@@ -5,7 +5,7 @@
 
 Primera Hour, Kylie Bogar, Ronan Takizawa, David Prelinger
 
-AI voices are stale and impersonal. Chrome extensions like "Free Text To Speech Online" use default voices to read text messages on the web out loud. While these default voices excel in cadence and clarity, they miss the nuance and emotion inherent in human speech. This emotional connection is important for a user, as it helps them feel engaged in online communication. Using personalized speech also helps users with special needs who rely on text-to-speech, as this feature assists them in identifying who is talking when vocalizing the messages.
+AI voices are stale and impersonal. Chrome extensions like <a href="https://chrome.google.com/webstore/detail/free-text-to-speech-onlin/npdkkcjlmhcnnaoobfdjndibfkkhhdfn">"Free Text To Speech Online"</a> use default voices to read text messages on the web out loud. While these default voices excel in cadence and clarity, they miss the nuance and emotion inherent in human speech. This emotional connection is important for a user, as it helps them feel engaged in online communication. Using personalized speech also helps users with special needs who rely on text-to-speech, as this feature assists them in identifying who is talking when vocalizing the messages.
 
 Our project is an attempt to improve the <a href="https://chrome.google.com/webstore/detail/free-text-to-speech-onlin/npdkkcjlmhcnnaoobfdjndibfkkhhdfn">"Free Text To Speech Online"</a> chrome extension, which does text-to-speech with a default voice. We tried to improve the Chrome extension by allowing customizable voices and only having it read the content within a text message and not everything on a page. 
 
