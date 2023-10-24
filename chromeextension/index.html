@@ -22,8 +22,8 @@
     <img src="./src/telespeech.png" alt="Telegram Logo" width="40" height="40" style="position:relative; bottom:12px;left:10px">
   </div>
     <h6 class="text-sm text-center font-weight-light">Custom AI text-to-speech on Telegram</h6>
-    <div id="loginform" style = "padding-bottom: 30px;">
-    <div class="mb-3">
+    <div id="loginform" style="padding-bottom: 30px;">
+      <div class="mb-3">
         <label for="email" class="form-label">Email Address</label>
         <input
             type="email"
@@ -33,11 +33,11 @@
             required
             autocomplete="email"
         />
-    </div>
-    <div class="mb-3">
-      <form>
-        <label class="form-label">Password</label>
-        <div class="input-group">
+      </div>
+      <div class="mb-3">
+        <form>
+          <label class="form-label">Password</label>
+          <div class="input-group">
             <input
                 type="password"
                 class="form-control"
@@ -47,15 +47,19 @@
                 minlength="8"
                 autocomplete="new-password"
             />
-        </div>
-      </form>
-    </div>
-    <button id="printButton" class="btn btn-primary btn-block" style="display: none;">Play Sound</button>
-    <button id="login" class="btn btn-primary btn-block" style="background-color: #25A6D9; border-color: #25A6D9;">Login</button>
+          </div>
+        </form>
+      </div>
 
-  </div>
-  <audio id="myAudio" controls="controls" style="display:none;">
-  </audio>
+      <!-- Added text and link here -->
+      <div class="text-center mb-3">
+        Don't have an account? <a href="https://telespeech.vercel.app/" target="_blank">Sign up</a>
+      </div>
+
+      <button id="printButton" class="btn btn-primary btn-block" style="display: none;">Play Sound</button>
+      <button id="login" class="btn btn-primary btn-block" style="background-color: #25A6D9; border-color: #25A6D9;">Login</button>
+    </div>
+    <audio id="myAudio" controls="controls" style="display:none;"></audio>
     <script src="./src/popup.js"></script>
     <script src="./src/login.js"></script>
 </body>
