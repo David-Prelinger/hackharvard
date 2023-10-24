@@ -11,7 +11,7 @@ Our project is an attempt to improve the <a href="https://chrome.google.com/webs
 
 Usage:
 
-1. Go to https://telespeakto.us
+1. Go to https://telespeech.vercel.app/
 2. Sign up for an account, and upload audio files of voices you want to use for the text-to-speech. For each audio file, set the name as the username displayed on the Telegram chat
 3. Download this repository as a zip, and upload the "ronanchromextension" directory to chrome://extensions/ (Make sure developer mode is On, and you upload it using "Load Unpacked"
 4. Open the Telegram web app, sign into your account on the chrome extension, and press play for any group chat. The extension will then play each person's text out loud in that person's voice 👍
