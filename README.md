@@ -18,6 +18,12 @@ Usage:
 
 <a href="https://www.youtube.com/watch?v=FSYjliOjmUY&ab_channel=PrimeraHour">Tutorial</a>
 
+
+https://github.com/David-Prelinger/hackharvard/assets/71115970/d23bfbe1-ff8b-44cc-a637-dc4238008404
+
+
+
+
 Tech Stack: 
 - Chrome Extension (Vanilla JS)
 - Web App (NextJS, Bootstrap, Firebase)
